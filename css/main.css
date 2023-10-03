@@ -86,6 +86,10 @@ body {
     font-size: 14px;
 }
 
+.nav-button {
+    display: none;
+}
+
 .nav-link {
     color: #000;
 }
@@ -126,10 +130,13 @@ body {
 .services-row {
     display: flex;
     column-gap: 30px;
+    row-gap: 60px;
+    flex-wrap: wrap;
 }
 
 .service-card {
-
+    flex: 1 1 0;
+    min-width: 315px;
 }
 
 .service-card-img {
