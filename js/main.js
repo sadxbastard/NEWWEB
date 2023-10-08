@@ -3,7 +3,9 @@ const navBtn = document.querySelector('#nav-btn')
 const navBtnImg = document.querySelector('#nav-btn-img')
 
 
-navBtn.onclick = () => {
+navBtn.addEventListener ('click', funForNavBtn)
+
+function funForNavBtn () {
     if (nav.classList.toggle('open')) {
         navBtnImg.src = "./img/icons/nav-close.svg"
     } else {
