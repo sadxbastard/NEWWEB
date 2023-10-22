@@ -18,7 +18,7 @@ body {
     font-weight: 600;
 }
 
-.btn {
+.send-message-btn {
     display: inline-block;
     padding: 7px 22px;
     background-color: #070707;
@@ -30,11 +30,11 @@ body {
     transition: background-color 0.2s ease-in, top 0.2s ease-in;
 }
 
-.btn:hover, .btn:focus {
+.send-message-btn:hover, .send-message-btn:focus {
     background-color: #323232;
 }
 
-.btn:active {
+.send-message-btn:active {
     position: relative; 
     top: 1px;
     background-color: #000;
@@ -218,3 +218,118 @@ body {
     color: #828282;
 }
 
+/* Popup */
+
+.popup__bg {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s all;
+}
+
+.popup__bg.active {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s all;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #fff;
+    width: 400px;
+    padding: 25px;
+    border-radius: 10px;
+    transition: 0.5s all;
+}
+
+.popup.active {
+    transform: translate(-50%, -50%) scale(1);
+    transition: 0.5s all;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.popup label {
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.popup .label__text {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #cfd0d3;
+    margin-bottom: 5px;
+}
+
+.popup input {
+    height: 45px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cfd0d3;
+}
+
+.popup input:focus {
+    border-bottom: 1px solid #000;
+}
+
+.popup input:focus + .label__text {
+    color: #000;
+}
+
+.popup textarea {
+    font-size: 18px;
+    resize: none;
+    width: 100%;
+    height: 150px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cfd0d3;
+    padding-top: 5px;
+}
+
+.popup textarea:focus {
+    border-bottom: 1px solid #000;
+}
+
+.popup textarea:focus + .label__text {
+    color: #000;
+}
+
+.popup button {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    background: #000;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: 0.5s all;
+}
+
+.popup button:hover {
+    background: #cfd0d3;
+    color:#000;
+    transition: 0.5s all;
+}
