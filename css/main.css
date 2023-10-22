@@ -95,8 +95,9 @@ body {
 }
 
 .nav-link.active {
-    color: #606060;
+    color: #828282;
 }
+
 
 /* Header content */
 
@@ -284,6 +285,10 @@ body {
     border: none;
     outline: none;
     border-bottom: 1px solid #cfd0d3;
+}
+
+.popup input._error{
+    border-bottom: 1px solid red;
 }
 
 .popup input:focus {
