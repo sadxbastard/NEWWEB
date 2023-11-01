@@ -22,23 +22,23 @@ modal.insertAdjacentHTML (
         <form class="popup">
             <img src="img/icons/nav-close.svg" alt="close" class="close-popup">
             <label>
-                <input type="text" class="last-name _req">
+                <input name="last_name" type="text" class="last-name _req">
                 <div class="label__text">Last name</div>
             </label>
             <label>
-                <input type="text" class="first-name _req">
+                <input name="first_name" type="text" class="first-name _req">
                 <div class="label__text">First name</div>
             </label>
             <label>
-                <input type="text" class="middle-name _req">
+                <input name="middle_name" type="text" class="middle-name _req">
                 <div class="label__text">Middle name</div>
             </label>
             <label>
-                <input type="text" class="email _req _email">
+                <input name="email" type="text" class="email _req _email">
                 <div class="label__text">Email</div>
             </label>
             <label>
-                <textarea name="message"></textarea>
+                <textarea name="message" class="mess"></textarea>
                 <div class="label__text">Your message</div>
             </label>
             <button type="submit">Send</button>
@@ -78,6 +78,32 @@ async function popupSend(e) {
     e.preventDefault();
     let error = popupValidate(popup);
     
+    let popupData = {
+        last_name: document.querySelector('.last-name').value,
+        first_name: document.querySelector('.first-name').value,
+        middle_name: document.querySelector('.middle-name').value,
+        email: document.querySelector('.email').value,
+        message: document.querySelector('.mess').value
+    }
+    
+    if (error === 0) {
+        popup.classList.add('_sending');
+        let response = await fetch('./feedback.php', {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(popupData)
+        });
+        if (response.ok) {
+            let result = await response.json();
+            alert("Your message has been sent successfully! You are the " + result.count + "st person who became interested in my portfolio and left feedback.");
+            popup.reset();
+            popup.classList.remove('_sending');
+        }
+        else {
+            alert(response.ok);
+            popup.classList.remove('_sending');
+        }
+    }
 }
 
 function popupValidate(popup) {
